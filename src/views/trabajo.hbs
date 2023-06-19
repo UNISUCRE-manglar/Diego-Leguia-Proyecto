@@ -1,0 +1,78 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js" integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{!-- <body class="hold-transition layout-top-nav"></body> --}}
+<div class="wrapper">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculo para el numero de paneles</title>
+  <script>
+    function trab() {
+
+      var rad = parseFloat(document.getElementById("rad").value);
+      var potenciapanel = parseFloat(document.getElementById("potenciapanel").value);
+      var mes1 = parseFloat(document.getElementById("mes1").value);
+      var mes2 = parseFloat(document.getElementById("mes2").value);
+      var mes3 = parseFloat(document.getElementById("mes3").value);
+      var mes4 = parseFloat(document.getElementById("mes4").value);
+      var mes5 = parseFloat(document.getElementById("mes5").value);
+      var mes6 = parseFloat(document.getElementById("mes6").value);
+   
+      
+      
+
+
+        var suma = mes1+mes2+mes3+mes4+mes5+mes6;
+        var promedio = suma / 6;
+        var consumodiario = (promedio/30)*1000;
+        var numeropanel = (consumodiario*1.3)/(rad*potenciapanel)
+        
+        
+      document.getElementById("resultado2").innerHTML = "el numero de paneles que necesita es  " + Math.ceil(numeropanel);
+    }
+  </script>
+</head>
+<body>
+<div id="pdfdescarga">
+  <h1>Suma de dos números</h1>
+  <label for="numero1">radiacion solar :</label>
+  <input type="text" id="rad"><br>
+  <label for="numero2">potencia del panel:</label>
+  <input type="text" id="potenciapanel"><br>
+  <label for="numero2">mes 1:</label>
+  <input type="text" id="mes1"><br>
+ <label for="numero2">mes 2:</label>
+  <input type="text" id="mes2"><br>
+ <label for="numero2">mes 3:</label>
+  <input type="text" id="mes3"><br>
+ <label for="numero2">mes 4:</label>
+  <input type="text" id="mes4"><br>
+ <label for="numero2">mes 5:</label>
+  <input type="text" id="mes5"><br>
+ <label for="numero2">mes 6:</label>
+  <input type="text" id="mes6"><br>
+
+
+  <button onclick="trab()">calcular</button>
+
+  <p id="resultado2"></p>
+
+
+  <button  id="pdf">PDF</button>
+</div>
+</body>
+</html>
+<script>
+let htmlPDF =  document.getElementById("pdfdescarga");
+let exportPDF =  document.getElementById("pdf");
+exportPDF.onclick = (e)=> html2pdf(htmlPDF)
+</script>
+
+
+</div>
+<!-- ./wrapper -->
+
+
